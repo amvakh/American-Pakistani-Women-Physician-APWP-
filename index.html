@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Women in Medicine Directory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <meta name="description" content="Connecting, celebrating, and empowering women in healthcare worldwide." />
+    <meta name="theme-color" content="#667eea" />
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #2d3748;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Search */
+        .search-section {
+            background: white;
+            border-radius: 20px;
+            margin: -2rem auto 4rem;
+            max-width: 800px;
+            padding: 2rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 1rem;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .filter-select {
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            border: 2px solid #e2e8f0;
+        }
+
+        /* Directory */
+        .main-content {
+            background: white;
+            padding: 3rem 0;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .content-tabs {
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid #f7fafc;
+            margin-bottom: 2rem;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-weight: 600;
+            color: #718096;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .directory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f7fafc;
+        }
+
+        .profile-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #667eea;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .profile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: #f7fafc;
+            color: #4a5568;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+            }
+
+            .search-container {
+                flex-direction: column;
+            }
+
+            .directory-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">WiM Directory</a>
+            <ul class="nav-links">
+                <li><a href="#directory">Directory</a></li>
+                <li><a href="#mentorship">Mentorship</a></li>
+                <li><a href="#submit">Join</a></li>
+            </ul>
+            <a href="#submit" class="btn-primary">Join Directory</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Women in Medicine Directory</h1>
+            <p>Connecting, celebrating, and empowering women in healthcare worldwide</p>
+            <div class="hero-stats">
+                <div><span class="stat-number">2,847</span><span class="stat-label">Medical Professionals</span></div>
+                <div><span class="stat-number">156</span><span class="stat-label">Specialties</span></div>
+                <div><span class="stat-number">89</span><span class="stat-label">Countries</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="search-section container">
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search by name, specialty, or location..."/>
+            <button class="btn-primary" onclick="searchDirectory()">Search</button>
+        </div>
+        <div class="filters">
+            <select class="filter-select" id="specialtyFilter">
+                <option value="">All Specialties</option>
+                <option value="cardiology">Cardiology</option>
+                <option value="neurology">Neurology</option>
+                <option value="surgery">Surgery</option>
+            </select>
+            <select class="filter-select" id="locationFilter">
+                <option value="">All Locations</option>
+                <option value="usa">USA</option>
+                <option value="canada">Canada</option>
+            </select>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="content-tabs">
+                <button class="tab active" onclick="showTab('directory')">Directory</button>
+                <button class="tab" onclick="showTab('mentorship')">Mentorship</button>
+            </div>
+
+            <div id="directory" class="directory-grid tab-content active">
+                <!-- Profile cards injected here -->
+            </div>
+
+            <div id="mentorship" class="directory-grid tab-content" style="display:none;">
+                <!-- Mentorship profiles -->
+            </div>
+        </div>
+    </main>
+
+    <section class="submit-section container" id="submit">
+        <h2>Join Our Directory</h2>
+        <p>Be part of a growing network of women physicians</p>
+        <a class="btn-primary" href="https://noteforms.com/forms/contact-form-ax8gcu" target="_blank">Submit Profile</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Women in Medicine Directory. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const sampleProfiles = [
+            {
+                name: "Dr. Maya Patel",
+                specialty: "Cardiology",
+                hospital: "Johns Hopkins",
+                location: "Baltimore, MD",
+                education: "Harvard",
+                tags: ["Women's Health", "Interventional"],
+                initials: "MP"
+            },
+            {
+                name: "Dr. Sarah Liu",
+                specialty: "Neurosurgery",
+                hospital: "Mayo Clinic",
+                location: "Rochester, MN",
+                education: "Stanford",
+                tags: ["Mentor", "Surgery"],
+                initials: "SL"
+            }
+        ];
+
+        function createProfileCard(profile) {
+            return `
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">${profile.initials}</div>
+                        <div>
+                            <h3>${profile.name}</h3>
+                            <p>${profile.specialty}</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>🏥 ${profile.hospital}</p>
+                        <p>📍 ${profile.location}</p>
+                        <p>🎓 ${profile.education}</p>
+                    </div>
+                    <div class="profile-tags">
+                        ${profile.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderProfiles(profiles) {
+            const grid = document.getElementById("directory");
+            grid.innerHTML = profiles.map(createProfileCard).join("");
+        }
+
+        function searchDirectory() {
+            const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+            const specialty = document.getElementById("specialtyFilter").value.toLowerCase();
+            const location = document.getElementById("locationFilter").value.toLowerCase();
+
+            const filtered = sampleProfiles.filter(p =>
+                (p.name.toLowerCase().includes(searchTerm) || 
+                 p.specialty.toLowerCase().includes(searchTerm) || 
+                 p.location.toLowerCase().includes(searchTerm)) &&
+                (specialty === "" || p.specialty.toLowerCase().includes(specialty)) &&
+                (location === "" || p.location.toLowerCase().includes(location))
+            );
+
+            renderProfiles(filtered);
+        }
+
+        function showTab(tabId) {
+            document.querySelectorAll(".tab-content").forEach(tab => tab.style.display = "none");
+            document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+            document.getElementById(tabId).style.display = "grid";
+            event.target.classList.add("active");
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderProfiles(sampleProfiles);
+            document.getElementById("searchInput").addEventListener("keypress", e => {
+                if (e.key === "Enter") searchDirectory();
+            });
+        });
+    </script>
+</body>
+</html>
